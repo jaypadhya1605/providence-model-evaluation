@@ -202,6 +202,7 @@ def main() -> None:
         evaluator_config=evaluator_config,
         output_path=str(OUTPUT_DIR / "agent-eval.result.json"),
         evaluation_name="AgentEval-ProvidenceClinicalTriage",
+        azure_ai_project=FOUNDRY_PROJECT_ENDPOINT,  # -> visible in Foundry portal 'Evaluation' tab
     )
     metrics = dict(result.get("metrics", {})) if isinstance(result, dict) else {}
     for k, v in metrics.items():

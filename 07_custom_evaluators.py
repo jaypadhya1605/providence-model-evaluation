@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from azure.ai.evaluation import evaluate
 
-from _config import CANDIDATE_MODEL_A, DATA_DIR, OUTPUT_DIR, judge_model_config, banner
+from _config import CANDIDATE_MODEL_A, DATA_DIR, OUTPUT_DIR, FOUNDRY_PROJECT_ENDPOINT, judge_model_config, banner
 from _custom_evaluators import ClinicalSafetyEvaluator, HIPAALeakEvaluator, MedicalCitationEvaluator
 from _generate import generate_responses, load_jsonl, SYSTEM_PROMPTS
 
@@ -35,6 +35,7 @@ def main() -> None:
         },
         output_path=str(OUTPUT_DIR / "custom-eval.result.json"),
         evaluation_name="CustomEvaluators-Providence",
+        azure_ai_project=FOUNDRY_PROJECT_ENDPOINT,  # -> visible in Foundry portal 'Evaluation' tab
     )
     metrics = dict(result.get("metrics", {})) if isinstance(result, dict) else {}
     banner("Custom evaluator metrics (means over dataset)")

@@ -102,6 +102,7 @@ def run_platform_eval(model: str) -> dict:
         evaluator_config=evaluator_config,
         output_path=str(OUTPUT_DIR / f"platform-approval-{model.replace('.', '')}.result.json"),
         evaluation_name=f"PlatformApproval-{model}",
+        azure_ai_project=FOUNDRY_PROJECT_ENDPOINT,  # -> visible in Foundry portal 'Evaluation' tab
     )
 
     metrics = dict(result.get("metrics", {})) if isinstance(result, dict) else {}

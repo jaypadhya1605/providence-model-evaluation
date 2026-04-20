@@ -28,7 +28,7 @@ from azure.ai.evaluation import (
     CoherenceEvaluator,
 )
 
-from _config import CANDIDATE_MODEL_A, CANDIDATE_MODEL_B, DATA_DIR, OUTPUT_DIR, judge_model_config, banner
+from _config import CANDIDATE_MODEL_A, CANDIDATE_MODEL_B, DATA_DIR, OUTPUT_DIR, FOUNDRY_PROJECT_ENDPOINT, judge_model_config, banner
 from _generate import generate_responses, load_jsonl, SYSTEM_PROMPTS
 from _custom_evaluators import ClinicalSafetyEvaluator, HIPAALeakEvaluator, MedicalCitationEvaluator
 
@@ -75,6 +75,7 @@ def run_clinical_eval(model: str) -> dict:
         evaluator_config=evaluator_config,
         output_path=str(OUTPUT_DIR / f"usecase-clinical-{model.replace('.', '')}.result.json"),
         evaluation_name=f"UseCase-Clinical-{model}",
+        azure_ai_project=FOUNDRY_PROJECT_ENDPOINT,  # -> visible in Foundry portal 'Evaluation' tab
     )
     metrics = dict(result.get("metrics", {})) if isinstance(result, dict) else {}
     print(f"\n  Metrics for {model}:")

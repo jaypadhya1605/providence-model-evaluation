@@ -146,6 +146,7 @@ Open **5 tabs** / windows:
 | Why gpt-4o as the judge? | Stable, well-calibrated for rubric-following, cheaper than gpt-5 for judge-scale workloads. You can swap via `JUDGE_MODEL` env var. |
 | What if Foundry adds a new built-in evaluator next month? | Script 04 is designed to iterate over `azure.ai.evaluation`; adding a new evaluator is a one-line change. |
 | Does this work for multi-agent workflows? | Script 06 evaluates a single agent. For multi-agent, add an aggregator evaluator that scores the orchestration trace — same `evaluate()` API. |
+| **What is the difference between Guardrails and Evaluators?** | **Guardrails** run at inference time inside Foundry and *block or redact* unsafe input/output in real time (Jailbreak shield, Content Safety, Protected Material, PHI blocklists). **Evaluators** (scripts 01-09) run offline against a dataset and *score* responses so Governance has evidence. Guardrails prevent harm in production; evaluators prove the guardrails work — you need both. Microsoft ships `Microsoft.DefaultV2` out of the box for gpt-5-mini; for Providence add Jailbreak + Indirect-Attack + Protected-Material + a PHI blocklist (MRN / SSN regex), then show the red-team eval (script 08) as coverage proof. |
 
 ## Rollback / recovery
 

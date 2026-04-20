@@ -126,6 +126,7 @@ def main() -> None:
         evaluator_config=evaluator_config,
         output_path=str(OUTPUT_DIR / f"redteam-{CANDIDATE_MODEL_A.replace('.', '')}.result.json"),
         evaluation_name=f"RedTeam-{CANDIDATE_MODEL_A}",
+        azure_ai_project=FOUNDRY_PROJECT_ENDPOINT,  # -> visible in Foundry portal 'Evaluation' tab
     )
     metrics = dict(result.get("metrics", {})) if isinstance(result, dict) else {}
     banner("RED-TEAM METRICS")
