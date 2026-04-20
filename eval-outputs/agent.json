@@ -1,0 +1,7 @@
+{
+  "agent_name": "providence-clinical-triage",
+  "agent_id": "providence-clinical-triage:2",
+  "agent_version": "2",
+  "model": "gpt-5",
+  "conversation_id": "conv_2b68ae97ff9774ac00qWLqyK1MLFKKzajZqEzzR0vIQ9ftFHMk"
+}

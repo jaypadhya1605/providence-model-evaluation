@@ -1,0 +1,40 @@
+[
+  {
+    "model": "gpt-5",
+    "metrics": {
+      "relevance.relevance": 4.9,
+      "relevance.gpt_relevance": 4.9,
+      "similarity.similarity": 3.5,
+      "similarity.gpt_similarity": 3.5,
+      "f1.f1_score": 0.1704675911294615,
+      "coherence.coherence": 4.7,
+      "coherence.gpt_coherence": 4.7,
+      "fluency.fluency": 4.0,
+      "fluency.gpt_fluency": 4.0,
+      "relevance.binary_aggregate": 1.0,
+      "similarity.binary_aggregate": 0.9,
+      "f1.binary_aggregate": 0.0,
+      "coherence.binary_aggregate": 1.0,
+      "fluency.binary_aggregate": 1.0
+    }
+  },
+  {
+    "model": "gpt-5-mini",
+    "metrics": {
+      "relevance.relevance": 4.8,
+      "relevance.gpt_relevance": 4.8,
+      "similarity.similarity": 3.6,
+      "similarity.gpt_similarity": 3.6,
+      "f1.f1_score": 0.17974272509956407,
+      "coherence.coherence": 4.4,
+      "coherence.gpt_coherence": 4.4,
+      "fluency.fluency": 4.1,
+      "fluency.gpt_fluency": 4.1,
+      "relevance.binary_aggregate": 1.0,
+      "similarity.binary_aggregate": 0.8,
+      "f1.binary_aggregate": 0.0,
+      "coherence.binary_aggregate": 1.0,
+      "fluency.binary_aggregate": 1.0
+    }
+  }
+]

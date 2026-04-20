@@ -1,0 +1,31 @@
+# venv and caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# secrets
+.env
+*.pem
+*.key
+*.crt
+*.cert
+
+# local preview + logs
+preview-slides/
+*.log
+eval-outputs/10-run.log
+
+# system / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.streamlit/
+
+# large binaries (the L150 source deck stays local)
+L150 Microsoft Foundry Models Pitchdeck.PPTX
+Providence - Model Evaluation - Copy.pptx
+
+# internal notes
+providence-evaluation-notes.docx
+azure-resources.docx

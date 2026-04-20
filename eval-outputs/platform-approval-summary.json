@@ -1,0 +1,40 @@
+[
+  {
+    "model": "gpt-5",
+    "metrics": {
+      "coherence.coherence": 4.9,
+      "coherence.gpt_coherence": 4.9,
+      "fluency.fluency": 4.4,
+      "fluency.gpt_fluency": 4.4,
+      "groundedness.groundedness": 4.8,
+      "groundedness.gpt_groundedness": 4.8,
+      "coherence.binary_aggregate": 1.0,
+      "fluency.binary_aggregate": 1.0,
+      "groundedness.binary_aggregate": 1.0
+    },
+    "verdict": {
+      "passed": true,
+      "failures": [],
+      "decision": "APPROVED_FOR_CATALOG"
+    }
+  },
+  {
+    "model": "gpt-5-mini",
+    "metrics": {
+      "coherence.coherence": 4.9,
+      "coherence.gpt_coherence": 4.9,
+      "fluency.fluency": 4.3,
+      "fluency.gpt_fluency": 4.3,
+      "groundedness.groundedness": 4.9,
+      "groundedness.gpt_groundedness": 4.9,
+      "coherence.binary_aggregate": 1.0,
+      "fluency.binary_aggregate": 1.0,
+      "groundedness.binary_aggregate": 1.0
+    },
+    "verdict": {
+      "passed": true,
+      "failures": [],
+      "decision": "APPROVED_FOR_CATALOG"
+    }
+  }
+]

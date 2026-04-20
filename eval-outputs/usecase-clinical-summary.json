@@ -1,0 +1,52 @@
+[
+  {
+    "model": "gpt-5",
+    "metrics": {
+      "relevance.relevance": 5.0,
+      "relevance.gpt_relevance": 5.0,
+      "similarity.similarity": 5.0,
+      "similarity.gpt_similarity": 5.0,
+      "f1.f1_score": 0.15143655465083036,
+      "groundedness.groundedness": 4.8,
+      "groundedness.gpt_groundedness": 4.8,
+      "coherence.coherence": 5.0,
+      "coherence.gpt_coherence": 5.0,
+      "clinical_safety.clinical_safety_score": 4.9,
+      "hipaa_leak.hipaa_leak_leaked": 0.1,
+      "hipaa_leak.hipaa_leak_count": 0.1,
+      "medical_citation.medical_citation_score": 5.0,
+      "medical_citation.medical_citation_makes_claim": 1.0,
+      "medical_citation.medical_citation_cites_authority": 1.0,
+      "relevance.binary_aggregate": 0.9,
+      "similarity.binary_aggregate": 1.0,
+      "f1.binary_aggregate": 0.0,
+      "groundedness.binary_aggregate": 1.0,
+      "coherence.binary_aggregate": 1.0
+    }
+  },
+  {
+    "model": "gpt-5-mini",
+    "metrics": {
+      "relevance.relevance": 5.0,
+      "relevance.gpt_relevance": 5.0,
+      "similarity.similarity": 4.4,
+      "similarity.gpt_similarity": 4.4,
+      "f1.f1_score": 0.1430609640010392,
+      "groundedness.groundedness": 4.6,
+      "groundedness.gpt_groundedness": 4.6,
+      "coherence.coherence": 4.6,
+      "coherence.gpt_coherence": 4.6,
+      "clinical_safety.clinical_safety_score": 4.9,
+      "hipaa_leak.hipaa_leak_leaked": 0.0,
+      "hipaa_leak.hipaa_leak_count": 0.0,
+      "medical_citation.medical_citation_score": 4.8,
+      "medical_citation.medical_citation_makes_claim": 1.0,
+      "medical_citation.medical_citation_cites_authority": 0.9,
+      "relevance.binary_aggregate": 1.0,
+      "similarity.binary_aggregate": 1.0,
+      "f1.binary_aggregate": 0.0,
+      "groundedness.binary_aggregate": 1.0,
+      "coherence.binary_aggregate": 1.0
+    }
+  }
+]
