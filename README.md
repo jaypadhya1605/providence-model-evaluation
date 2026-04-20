@@ -1,10 +1,10 @@
 # Providence — Session 3: Model Evaluation
 
-> Part of the **foundry-agent-observatory** Providence deep-dive repo:
-> <https://github.com/jaypadhya1605/foundry-agent-observatory>.
-> This folder is **folder-3-model-validation** — it builds on Sessions 1
-> (Observability) and 2 (APIM) and directly answers the five questions
-> Providence raised in `providence-evaluation-notes.docx`.
+> Repo: <https://github.com/jaypadhya1605/providence-model-evaluation>
+>
+> Third of a three-session Foundry deep-dive for Providence Health (after
+> Session 1 Observability and Session 2 APIM AI Gateway). This repo answers
+> the five evaluation questions Providence raised during kickoff.
 
 ## The use case
 
@@ -25,22 +25,20 @@ The scripts in this folder implement all of the above end-to-end against
 `gpt-4o` and `gpt-4.1-mini`, using only the pre-existing Foundry resources
 from Sessions 1 and 2 (zero new infra).
 
-## Repository structure (parent repo: foundry-agent-observatory)
+## Repository structure
 
 ```
-foundry-agent-observatory/
-├── folder-1-Observability/         # Session 1 — App Insights, tracing, dashboards
-├── folder-2-APIM/                  # Session 2 — APIM AI Gateway, semantic caching
-│   └── streamlit_demo.py
-├── folder-3-model-validation/      # Session 3 — THIS FOLDER
-│   ├── streamlit_app.py            # Unified demo UI (this session)
-│   ├── datasets/
-│   ├── eval-outputs/
-│   ├── 01..09 scripts
-│   ├── _config.py / _generate.py / _custom_evaluators.py
-│   └── README.md
-├── README.md                       # top-level narrative
-└── ...
+providence-model-evaluation/
+├── streamlit_app.py                   # Unified demo UI (9 tabs)
+├── datasets/                          # Clinical, non-clinical, adversarial prompts
+├── eval-outputs/                      # Pre-computed evaluation results
+├── 01‐10_*.py                         # Evaluation scripts (see table below)
+├── _config.py / _generate.py          # Shared config + model calling
+├── _custom_evaluators.py              # Providence overlay (ClinicalSafety, HIPAA, Citation)
+├── .github/workflows/                 # CI/CD - model-evaluation.yml
+├── Providence - Model Evaluation.pptx # 40-slide pitch deck
+├── walk through.md                    # 60-minute demo script
+└── README.md
 ```
 
 ## Streamlit demo app
@@ -174,3 +172,37 @@ Foundry_agentic-creation.md        # classic vs new Agent Service — knowledge 
 requirements.txt
 README.md
 ```
+
+## GitHub Actions — CI/CD evaluation
+
+`.github/workflows/model-evaluation.yml` re-runs the harness on every PR,
+nightly at 07:00 UTC, and on-demand via `workflow_dispatch`. The
+exception-process step is the PR gate: any model scored `AUTO_DENIED` fails
+the job and blocks merge.
+
+### One-time setup (for this repo to run CI against Azure)
+
+1. Create an app registration for GitHub OIDC federation:
+   ```powershell
+   az ad app create --display-name providence-model-eval-gh
+   # Note the appId (AZURE_CLIENT_ID) and objectId
+   az ad sp create --id <appId>
+   az role assignment create --assignee <appId> --role Contributor \
+     --scope /subscriptions/<sub-id>/resourceGroups/<rg>
+   ```
+2. Add a federated credential for `repo:jaypadhya1605/providence-model-evaluation:ref:refs/heads/main`
+   (and another for `pull_request` if you want PR runs).
+3. Add these as **repo secrets** under Settings → Secrets → Actions:
+
+   | Secret | Source |
+   |---|---|
+   | `AZURE_CLIENT_ID`            | app registration |
+   | `AZURE_TENANT_ID`            | `az account show --query tenantId` |
+   | `AZURE_SUBSCRIPTION_ID`      | `az account show --query id` |
+   | `AOAI_ENDPOINT`              | Foundry account endpoint |
+   | `FOUNDRY_PROJECT_ENDPOINT`   | Foundry project endpoint |
+   | `FOUNDRY_ACCOUNT_NAME`       | `ai-apim-demo-jp-001` (or yours) |
+   | `FOUNDRY_PROJECT_NAME`       | `proj-apim-demo-jp-001` (or yours) |
+   | `AZURE_RESOURCE_GROUP`       | resource group |
+
+4. Trigger a run: **Actions → Model Evaluation (Providence) → Run workflow**.

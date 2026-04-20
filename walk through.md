@@ -3,7 +3,7 @@
 Deck: `Providence - Model Evaluation.pptx` · 39 slides
 Demo UI: `streamlit run streamlit_app.py` → http://localhost:8501
 Portal: <https://ai.azure.com> → project `proj-apim-demo-jp-001` → Agents + Model catalog (Leaderboards) + Evaluation UI
-Repo: <https://github.com/jaypadhya1605/foundry-agent-observatory> (folder-3, CI workflow at `.github/workflows/model-evaluation.yml`)
+Repo: <https://github.com/jaypadhya1605/providence-model-evaluation> (CI workflow at `.github/workflows/model-evaluation.yml`)
 
 ## Pre-call setup (do this 5 minutes before)
 
@@ -19,7 +19,7 @@ Open **5 tabs** / windows:
 1. **PowerPoint** — `Providence - Model Evaluation.pptx` in presenter view (so you see speaker notes).
 2. **Browser — Streamlit** — http://localhost:8501.
 3. **Browser — Foundry portal** — https://ai.azure.com → `proj-apim-demo-jp-001` → **Agents** blade. Should already show `providence-clinical-triage:2`. Keep a second tab on **Model catalog → Leaderboards** and a third on **Evaluation** ready.
-4. **Browser — GitHub** — https://github.com/jaypadhya1605/foundry-agent-observatory → **Actions** tab, with the `.github/workflows/model-evaluation.yml` workflow visible.
+4. **Browser — GitHub** — https://github.com/jaypadhya1605/providence-model-evaluation → **Actions** tab, with the `.github/workflows/model-evaluation.yml` workflow visible.
 5. **Terminal** — venv activated, in the session folder. For live script runs.
 
 > **Do not re-run the long evaluation scripts during the call.** Everything under `eval-outputs/` is pre-computed. The Streamlit tabs read that JSON directly. Only run lightweight scripts live (04, 09).
@@ -127,7 +127,7 @@ Open **5 tabs** / windows:
 
 ### DEMO 9 (slide 36) — GitHub Actions PR gate
 
-1. Switch to the **GitHub tab** → repo `jaypadhya1605/foundry-agent-observatory`.
+1. Switch to the **GitHub tab** → repo `jaypadhya1605/providence-model-evaluation`.
 2. Open `.github/workflows/model-evaluation.yml`. Scroll through the triggers (pull_request, cron, workflow_dispatch), the OIDC login step, and the evaluation run (01→02→03→07→08→09).
 3. Click the **Actions** tab → open the most recent `Model Evaluation (Providence)` run. Expand the **09 Exception process** step.
 4. Show: job status ❌ red X when any model = `AUTO_DENIED`. Scroll to **Summary → Artifacts** → `providence-eval-outputs` contains every `*.result.json`.
